@@ -24,7 +24,7 @@ resource "grafana_cloud_stack_service_account_token" "cloud_sa" {
   service_account_id = grafana_cloud_stack_service_account.cloud_sa.id
 }
 
-// Step 3: Create resources within the stack
+# Step 3: Create resources within the stack
 provider "grafana" {
   alias = "my_stack"
 
@@ -35,4 +35,10 @@ resource "grafana_folder" "my_folder" {
   provider = grafana.my_stack
   depends_on = [ grafana_cloud_stack_service_account_token.cloud_sa ]
   title = "Test Folder"
+}
+
+# Write Stack URL to logs
+output "stack_url" {
+  value       = grafana_cloud_stack.my_stack.url
+  description = "URL do Grafana Cloud stacka"
 }
