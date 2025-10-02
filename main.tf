@@ -10,7 +10,7 @@ resource "grafana_cloud_stack" "my_stack" {
 resource "grafana_cloud_stack_service_account" "cloud_sa" {
   provider   = grafana.cloud
   stack_slug = grafana_cloud_stack.my_stack.slug
-
+  depends_on = grafana_cloud_stack.my_stack
   name        = "sa_tf2"
   role        = "Admin"
   is_disabled = false
@@ -19,7 +19,7 @@ resource "grafana_cloud_stack_service_account" "cloud_sa" {
 resource "grafana_cloud_stack_service_account_token" "cloud_sa" {
   provider   = grafana.cloud
   stack_slug = grafana_cloud_stack.my_stack.slug
-
+  depends_on = grafana_cloud_stack_service_account.cloud_sa
   name               = "terraform serviceaccount key"
   service_account_id = grafana_cloud_stack_service_account.cloud_sa.id
 }
@@ -33,6 +33,6 @@ provider "grafana" {
 }
 resource "grafana_folder" "my_folder" {
   provider = grafana.my_stack
-
+  depends_on = grafana_cloud_stack_service_account_token.cloud_sa 
   title = "Test Folder"
 }
