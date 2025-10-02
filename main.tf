@@ -1,6 +1,4 @@
 resource "grafana_cloud_stack" "my_stack" {
-  provider              = grafana.cloud
-  cloud_access_policy_token = var.grafana_cloud_token
   name                  = "adamssstf1"
   slug                  = "adamssstf1"
   region_slug           = "eu"
