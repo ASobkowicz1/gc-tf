@@ -10,10 +10,6 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      pull-requests: write
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,12 +19,14 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        env:
+          TF_VAR_grafana_cloud_token: ${{ secrets.GRAFANA_CLOUD_TOKEN }}
 
       - name: Terraform Plan
         run: terraform plan
         env:
           TF_VAR_grafana_cloud_token: ${{ secrets.GRAFANA_CLOUD_TOKEN }}
-        
+
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
