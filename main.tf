@@ -36,9 +36,3 @@ resource "grafana_folder" "my_folder" {
   depends_on = [ grafana_cloud_stack_service_account_token.cloud_sa ]
   title = "Test Folder"
 }
-
-# Write Stack URL to logs
-output "stack_url" {
-  value       = grafana_cloud_stack.my_stack.url
-  description = "URL do Grafana Cloud stacka"
-}

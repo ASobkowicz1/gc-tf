@@ -34,8 +34,3 @@ jobs:
         run: terraform apply -auto-approve
         env:
           TF_VAR_grafana_cloud_token: ${{ secrets.GRAFANA_CLOUD_TOKEN }}
-
-      - name: Show stack URL
-        run: terraform output stack_url
-        env:
-          TF_VAR_grafana_cloud_token: ${{ secrets.GRAFANA_CLOUD_TOKEN }}
