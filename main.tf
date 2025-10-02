@@ -11,7 +11,7 @@ resource "grafana_cloud_stack_service_account" "cloud_sa" {
   provider   = grafana.cloud
   stack_slug = grafana_cloud_stack.my_stack.slug
   depends_on = [ grafana_cloud_stack.my_stack ]
-  name        = "sa_tf2"
+  name        = "sa_tf3"
   role        = "Admin"
   is_disabled = false
 }
