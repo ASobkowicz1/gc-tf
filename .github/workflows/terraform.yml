@@ -1,27 +1,27 @@
-#name: Terraform
+# name: Terraform
 
-#on:
-#  push:
-#    branches: [ "main" ]
-#  pull_request:
-#    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
-jobs:
-  terraform:
-    runs-on: ubuntu-latest
+# jobs:
+#   terraform:
+#     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      pull-requests: write
+#     permissions:
+#       contents: read
+#       pull-requests: write
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.8.0 # Użyj odpowiedniej wersji
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: hashicorp/setup-terraform@v3
+#         with:
+#           terraform_version: 1.8.0 # Użyj odpowiedniej wersji
 
-      - name: Run fmt check
-        run: terraform fmt -check
+#       - name: Run fmt check
+#         run: terraform fmt -check
       
-      - name: Run validate
-        run: terraform validate
+#       - name: Run validate
+#         run: terraform validate
