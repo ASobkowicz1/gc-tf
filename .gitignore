@@ -7,3 +7,6 @@
 # Sensitive
 terraform.tfvars
 *.auto.tfvars
+
+#GH Actions
+.github/workflows/
