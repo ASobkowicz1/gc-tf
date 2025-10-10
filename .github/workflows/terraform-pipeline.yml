@@ -23,7 +23,7 @@ jobs:
 
     defaults:
       run:
-        shell: bash working-directory:./environments/prod # Domyślny katalog roboczy
+        shell: bash working-directory:./environments/dev # Domyślny katalog roboczy
 
     steps:
       - name: Checkout
