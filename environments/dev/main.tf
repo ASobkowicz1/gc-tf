@@ -1,8 +1,8 @@
 #Stack creation
 resource "grafana_cloud_stack" "dev" {
   provider    = grafana.cloud
-  name        = "adamsss-tf-dev"
-  slug        = "adamsss-tf-dev"
+  name        = "adamssstfdev"
+  slug        = "adamssstfdev"
   region_slug = "prod-eu-west-2" # AWS Germany
   description = "DEV Terraform Grafana Stack"
 }
