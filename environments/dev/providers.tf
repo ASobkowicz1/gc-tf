@@ -6,6 +6,6 @@ provider "grafana" {
 provider "grafana" {
   alias = "stack"
 
-  url  = grafana_cloud_stack.cloud.url
+  url  = grafana_cloud_stack.dev.url
   auth = grafana_cloud_stack_service_account_token.terraform_admin.key
 }
