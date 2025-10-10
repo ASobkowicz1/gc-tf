@@ -1,3 +1,4 @@
+/*
 resource "grafana_data_source" "prometheus_cloud" {
   provider = grafana.stack
   
@@ -14,3 +15,4 @@ resource "grafana_data_source" "prometheus_cloud" {
     basicAuthPassword = grafana_cloud_stack.dev.prometheus_api_key
   })
 }
+*/
