@@ -22,3 +22,26 @@ resource "grafana_cloud_stack_service_account_token" "terraform_admin" {
   service_account_id = grafana_cloud_stack_service_account.terraform_admin.id
   name               = "terraform-token"
 }
+
+#USERS AND TEAMS
+
+resource "grafana_team" "team_devops" {
+  provider = grafana.stack
+  name     = "DevOps"
+}
+
+resource "grafana_team" "team_network" {
+  provider = grafana.stack
+  name     = "Network"
+}
+
+#FOLDERS
+resource "grafana_folder" "team_devops" {
+  provider = grafana.stack
+  title    = "DevOps Team"
+}
+
+resource "grafana_folder" "team_network" {
+  provider = grafana.stack
+  title    = "Network Team"
+}

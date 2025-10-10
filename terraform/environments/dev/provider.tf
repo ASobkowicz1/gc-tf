@@ -1,3 +1,19 @@
+terraform {
+  cloud {
+    organization = "AdamsssTF"
+    
+    workspaces {
+      name = "gc-tf"
+    }
+  }
+  required_providers {
+    grafana = {
+      source  = "grafana/grafana"
+      version = ">= 2.9.0"
+    }
+  }
+}
+
 provider "grafana" {
   alias = "cloud"
   cloud_access_policy_token = var.grafana_cloud_token
