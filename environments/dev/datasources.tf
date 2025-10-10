@@ -10,7 +10,7 @@ resource "grafana_data_source" "prometheus_cloud" {
   basic_auth_enabled = true
   basic_auth_username = grafana_cloud_stack.dev.prometheus_user_id
   
-  sensitive_json_data {
-    basic_auth_password = grafana_cloud_stack.dev.prometheus_api_key
-  }
+  secure_json_data_encoded = jsonencode({
+    basicAuthPassword = grafana_cloud_stack.dev.prometheus_api_key
+  })
 }
