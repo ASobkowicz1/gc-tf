@@ -34,7 +34,6 @@ jobs:
       # Łączy się z workspace w Terraform Cloud i pobiera providery
       - name: Terraform Init
         run: terraform init
-        working-directory: ./
 
       # Krok 4: Uruchomienie Terraform Plan
       # Ten krok wykona się tylko dla zdarzenia 'pull_request'
