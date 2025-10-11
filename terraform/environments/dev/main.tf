@@ -64,3 +64,8 @@ resource "grafana_folder" "team_network" {
   title    = "Network Team"
 }
 
+resource "grafana_folder" "team_paulinka" {
+  provider = grafana.stack
+  title    = "Paulinka"
+}
+
