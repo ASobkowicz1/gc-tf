@@ -23,49 +23,22 @@ resource "grafana_cloud_stack_service_account_token" "terraform_admin" {
   name               = "terraform-token"
 }
 
-#OAuth authentication
-resource "grafana_sso_settings" "generic_sso_settings" {
+#SAML authentication
+resource "grafana_sso_settings" "saml_sso_settings" {
   provider = grafana.stack
-  provider_name = "generic_oauth"
-  oauth2_settings {
-    name              = "Auth0"
-    auth_url          = "https://${var.oauth_url}/authorize"
-    token_url         = "https://${var.oauth_url}/oauth/token"
-    api_url           = "https://${var.oauth_url}/userinfo"
-    client_id         = var.oauth_client_id
-    client_secret     = var.oauth_client_secret
-    allow_sign_up     = true
-    auto_login        = false
-    scopes            = "openid profile email offline_access"
-    use_pkce          = true
-    use_refresh_token = true
+  provider_name = "saml"
+  saml_settings {
+    name = "Auth0 SAML"
+    allow_sign_up             = true
+    auto_login                = true
+    idp_metadata_url          = "${var.saml_idp_metadata_url}"
+    assertion_attribute_login = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+    assertion_attribute_email = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+    assertion_attribute_name  = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+    assertion_attribute_groups= "https://dev-ia8t0x2zbbtsz63o.eu.auth0.com/roles"
+    assertion_attribute_role  = "https://dev-ia8t0x2zbbtsz63o.eu.auth0.com/roles"
+    role_values_editor        = "editor"
+    role_values_admin         = "admin"
   }
-}
-
-#USERS AND TEAMS
-resource "grafana_team" "team_devops" {
-  provider = grafana.stack
-  name     = "DevOps"
-}
-
-resource "grafana_team" "team_network" {
-  provider = grafana.stack
-  name     = "Network"
-}
-
-#FOLDERS
-resource "grafana_folder" "team_devops" {
-  provider = grafana.stack
-  title    = "DevOps Team"
-}
-
-resource "grafana_folder" "team_network" {
-  provider = grafana.stack
-  title    = "Network Team"
-}
-
-resource "grafana_folder" "team_paulinka" {
-  provider = grafana.stack
-  title    = "Paulinka"
 }
 
