@@ -25,6 +25,7 @@ resource "grafana_cloud_stack_service_account_token" "terraform_admin" {
 
 #OAuth authentication
 resource "grafana_sso_settings" "generic_sso_settings" {
+  provider = grafana.stack
   provider_name = "generic_oauth"
   oauth2_settings {
     name              = "Auth0"
